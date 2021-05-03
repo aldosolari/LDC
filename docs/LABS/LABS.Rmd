@@ -1,0 +1,118 @@
+---
+title: "LABS"
+author: "Aldo Solari e Andrea Gilardi"
+institute: "Lab Data Challenges"
+date: "6 Maggio 2021"
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      highlightStyle: github
+      highlightLines: TRUE
+      countIncrementalSlides: FALSE
+---
+
+# Workflow
+
+![](IMAGES/r4ds_data-science.png)
+ .footnote[Immagine tratta dal libro [R for Data Science](https://r4ds.had.co.nz/) di Hadley Wickham e Garrett Grolemund]
+
+---
+
+# Labs
+
+| Laboratorio | Attività |
+|----------|----------|
+| I | Import, Tidy, Understand (Explore)|
+|||
+| II | Understand (Explore) |
+|||
+| III | Understand (Modeling) |
+|||
+| IV | Understand (Modeling) |
+|||
+| V | Communicate |
+
+---
+
+# Tasks
+
+
+
+---
+
+# Assignments
+
+---
+
+layout: false
+class: inverse, middle, center
+
+# Workflow
+
+---
+
+# Import
+
+[data.table](https://rdatatable.gitlab.io/data.table/)
+
+![](IMAGES/datatable.png)
+
+Ulteriori riferimenti:
+
+[A gentle introduction to data.table]( https://atrebas.github.io/post/2020-06-17-datatable-introduction/) by Atrebas
+
+---
+
+# Tidy, transform and visualize
+
+[tidyverse](https://www.tidyverse.org/)
+
+![](IMAGES/tidyverse.png)
+
+
+---
+
+# Modelling process
+
+![](IMAGES/intro-process-1.svg)
+
+.footnote[Immagine tratta dal libro [Feature Engineering and Selection](http://www.feat.engineering/index.html) di Max Kuhn e Kjell Johnson]
+ 
+---
+
+# Modelling
+
+[tidymodels](https://www.tidymodels.org/)
+
+![](IMAGES/tidymodels.jpg)
+
+Ulteriori riferimenti:
+
+[Tidy Modeling with R](https://www.tmwr.org/) by Max Kuhn and Julia Silge
+
+
+
+---
+
+# Modelling time series
+
+[fable](http://fable.tidyverts.org/index.html)
+
+![](IMAGES/fable.png)
+
+Ulteriori riferimenti:
+
+[Forecasting: Principles and Practice (3rd ed)](https://otexts.com/fpp3/) by Rob J. Hyndman and George Athanasopoulos
+
+---
+
+# Modelling time series
+
+[modeltime](https://business-science.github.io/modeltime/)
+
+![](IMAGES/modeltime.jpg)
+
+
+
+
