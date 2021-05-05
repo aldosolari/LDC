@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Electricity Load Forecast Challenge</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="bicocca.css" type="text/css" />
+    <link rel="stylesheet" href="fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Electricity Load Forecast Challenge
+## Lab Data Challenges
+### CLAMSES, A.A. 2020/21
+### Università Milano-Bicocca </br> 6 Maggio 2021
+
+---
+
+
+
+
+background-size: 100%
+background-image: url(https://media.giphy.com/media/H7ODVHu0kTVnfenNtk/giphy.gif)
+
+
+---
+
+### In collaborazione con
+
+&lt;img src="https://www.repower.com/media/456971/repower_1500px_it-0202.png" alt="repower" width="360" /&gt;
+
+.pull-left[
+![](IMAGES/fabio.png)
+
+**Fabio Baldi**
+
+Head of Market Risk &amp; Business Analytics
+
+]
+
+.pull-right[
+
+![:scale 40%](IMAGES/carmelina.png)
+
+**Carmelina Tipoldi**
+
+Models and Analysis 
+
+]
+
+---
+
+### Con il supporto di 
+
+
+.pull-left[
+
+![](IMAGES/datalab.png)
+
+]
+
+.pull-right[
+
+![:scale 30%](IMAGES/pelosi.png)
+
+**Giovanni Pelosi**
+
+Datalab Cloud Engineer
+
+]
+
+---
+class: center
+
+# Lab Data Challenges
+
+![:scale 40%](IMAGES/LDC.png)
+
+---
+
+# Organizzatori
+
+.pull-left[
+![:scale 40%](IMAGES/vittoria.png)
+
+**Vittoria Cerasi**
+
+Coordinatrice del CLAMSES
+
+Professore di Economia
+
+]
+
+.pull-right[
+
+![:scale 37%](IMAGES/matteo.png)
+
+**Matteo Pelagatti**
+
+Direttore del DEMS
+
+Professore di Statistica Economica 
+
+]
+
+---
+
+# Docenti
+
+.pull-left[
+![:scale 40%](IMAGES/aldo.png)
+
+**Aldo Solari**
+
+Professore di Statistica
+
+]
+
+.pull-right[
+
+![:scale 40%](IMAGES/andrea.png)
+
+**Andrea Gilardi**
+
+Ricercatore di Statistica
+
+]
+
+---
+
+# Studenti
+
+
+## BOYS
+
+* Angelo Camera (STAT)
+
+* Simone Frigerio (STAT)
+
+* Nicholas Moro (SPI)
+
+## GIRLS
+
+* Margherita Parmi (STAT)
+
+* Laura Accorto (STAT)
+
+* Valentina Zangirolami (STAT)
+
+---
+
+# Agenda 
+
+
+* **6 Maggio 2021** : **INTRODUZIONE AL PROBLEMA (REPOWER)**
+
+* 10 Maggio 2021 : LAB I
+
+* 13 Maggio 2021 : LAB II 
+
+* 17 Maggio 2021 : LAB III  
+
+* 20 Maggio 2021 : LAB IV  
+
+* 24 Maggio 2021 : LAB V  
+
+* 28 Maggio 2021 (in presenza) : PRESENTAZIONE FINALE (STUDENTI)
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="xaringan.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

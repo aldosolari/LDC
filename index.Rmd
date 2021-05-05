@@ -18,11 +18,11 @@ LDC consiste in un laboratorio di 24 ore per un gruppo particolarmente motivato 
 
 La challenge di quest'anno
 
-## Electricity Load Forecast Challenge 
+## [Electricity Load Forecast Challenge](docs/INTRO/INTRO.html)
 
 in collaborazione con
 
-![](https://www.repower.com/media/456971/repower_1500px_it-0202.png){width=30%}
+![](https://www.repower.com/media/456971/repower_1500px_it-0202.png){width=20%}
 
 Repower è una società attiva su tutta la filiera energetica (produzione, distribuzione e commercializzazione). Una delle attività più importanti al fine di ottimizzare il costo di approvvigionamento dell’energia è la previsione dei consumi futuri dei propri clienti. Il progetto proposto consiste nello sviluppare un modello di previsione con un orizzonte di 72 ore del consumo dei clienti utilizzando i dati sui consumi storici degli ultimi due anni e le informazioni relative alla temperatura.
 Il mercato elettrico italiano è suddiviso in 7 zone di mercato ed è necessario produrre un forecast separato per ogni zona in cui Repower ha dei clienti.
@@ -30,25 +30,16 @@ Il dataset consiste nello storico degli ultimi due anni dei consumi orari di tut
 
 ## I laboratori
 
-
-* 6 Maggio: **INTRODUZIONE** 
-   * [I laboratori]()
-   * [Assignment A]()
+* 6 Maggio 2021: **Introduzione ai [LABS](docs/LABS/LABS.html)**
 
 * 10 Maggio 2021: **LAB I** 
-   * [Task I]()
    
 * 13 Maggio 2021: **LAB II** 
-   * [Task II]()
-   * [Assignment B]()
    
 * 17 Maggio 2021: **LAB III** 
-   * [Task III]()
    
 * 20 Maggio 2021: **LAB IV**
-   * [Task IV]()
-   * [Assignment C]()
    
 * 24 Maggio 2021: **LAB V** 
-   * [Task V]()
+
 

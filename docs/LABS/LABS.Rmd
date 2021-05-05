@@ -12,43 +12,184 @@ output:
       countIncrementalSlides: FALSE
 ---
 
-# Workflow
+```{r, echo=FALSE}
+library(fontawesome)
+```
+
+# WORKFLOW
 
 ![](IMAGES/r4ds_data-science.png)
  .footnote[Immagine tratta dal libro [R for Data Science](https://r4ds.had.co.nz/) di Hadley Wickham e Garrett Grolemund]
 
 ---
 
-# Labs
+# `r fa("flask")` LABS
 
-| Laboratorio | Attività |
-|----------|----------|
-| I | Import, Tidy, Understand (Explore)|
-|||
-| II | Understand (Explore) |
-|||
-| III | Understand (Modeling) |
-|||
-| IV | Understand (Modeling) |
-|||
-| V | Communicate |
+
+```{r, echo = FALSE}
+tab = data.frame(
+Lab = c("I","II","III","IV","V"),
+Activity = c("Import, Tidy, Understand (Explore)",
+             "Understand (Explore)",
+             "Understand (Modeling)",
+             "Understand (Modeling)",
+             "Communicate")
+)
+library(kableExtra)
+tab %>% 
+  kable(booktabs = T) %>%
+  kable_styling() %>%
+  row_spec(0:5,color = "black", background = "white")
+```
+
 
 ---
 
-# Tasks
+# LAB STRUCTURE
 
+
+## `r fa("slideshare")` presentazioni (studenti)
+
+## `r fa("tasks")` assegnazione del task (docenti)
+
+## `r fa("terminal")` lavoro di gruppo (studenti)
+
+## `r fa("file-code")` soluzione del task (docenti)
+
+## `r fa("edit")` homework 
+
+---
+
+# `r fa("edit")` HOMEWORK 0
+
+## Presentazione del problema e strategia di analisi
+
+1. Descrizione del problema
+
+2. Strategia di analisi
+
+  * Punti di forza
+  
+  * Punti di debolezza
+
+---
+
+# Il dataset
+
+Il dataset è costituito da $n=23436$ serie storiche di consumo orario di elettricità, ciascuna delle quali si riferisce ad un determinato punto di consegna (*point of delivery*, `POD`). 
+
+Sono state misurate le seguenti variabili:
+
+* `POD` id unità statistica (`integer`)
+
+* `DataMisura` data della misurazione `YYYY-MM-DD` (`IDate`)
+
+* `OraMisura` ora della misurazione 0,1,...,23 (`integer`)
+
+* `Consumo` Consumo (`numeric`) 
+
+* `Zona` Zona di mercato: `Z1`, ..., `Z7` (`character`) 
+
+* `Temp` Temperatura della Zona (`numeric`) 
+
+* `Wind` Ventosità della Zona (`numeric`) 
+
+* `Glob_radiation` Radiazione globale della Zona (`integer`) 
+
+Le misurazioni coprono l'arco temporale  1 Maggio 2018 - 31 Dicembre 2020. 
+
+---
+
+# Obiettivo dell'analisi 
+
+* Training set: 1 Maggio 2018 - 15 Novembre 2020
+
+* Test set: 16 Novembre 2020 - 3 Dicembre 2020
+
+* Obiettivo: prevedere il consumo orario aggregato per Zona nei giorni 1, 2 e 3 Dicembre 2020
+
+* Criterio di valutazione: Median Absolute Error
+
+$$\mathrm{MAE} = \sum_{z\in \{Z1,\ldots,Z7\}} \sum_{d=1}^{3} \sum_{h=0}^{23} |y_{z,d,h} - \hat{y}_{z,d,h}|$$
 
 
 ---
 
-# Assignments
+### Serie storica oraria aggregata per Zona
+
+![](IMAGES/plot1.png)
+
+---
+
+### Distribuzione oraria
+
+![](IMAGES/plot2.png)
+
+---
+
+### Serie storica giornaliera
+
+![](IMAGES/plot3.png)
+
+---
+
+### Previsione giornaliera
+
+![](IMAGES/plot4.png)
+
+---
+
+# `r fa("tasks")` ESEMPIO DI TASK
+
+1. Importare i dati con il comando `fread()` della libreria `data.table`. Verificare la codifica (`class`) delle variabili. Ordinare i dati secondo `POD`, `DataMisura` e `OraMisura`.  
+
+2. Presenza di `NA` nelle variabili `DataMisura`, `OraMisura` e `Zona`?
+
+3. Qual è il numero di `POD` presente nel dataset? Quanti `POD` per ogni `Zona` ? Ogni `POD` corrisponde ad una e una sola `Zona` ?
+
+4. Qual è la data della prima misurazione? E dell'ultima? 
+
+5. Ci sono `POD` che "escono" e poi "rientrano" nel dataset? Cioè, ci sono `POD` con osservazioni non consecutive? Rappresentare il risultato graficamente per alcuni `POD`. 
+
+6. Rappresentare graficamente la distribuzione di frequenza della prima data di misurazione dei `POD`. Fare lo stesso per l'ultima data di misurazione. 
+
+7. E' sempre vero che i `POD` entrano alle ore "00"? Quanti/quali sono i `POD` che entrano ad un orario diverso delle 00?
+
+---
+
+# `r fa("file-code")` ESEMPIO DI SOLUZIONE
+
+```{r, eval=FALSE}
+library(data.table)
+
+repower <- fread(
+  input = "repower.txt"
+)
+
+repower
+
+##              POD DataMisura OraMisura Consumo Zona Temp Wind Glob_radiation
+##         1:     1 2019-03-01         0    8.40   Z1  9.0  3.5             NA
+##         2:     1 2019-03-01         1    8.40   Z1  8.0  3.2             NA
+##         3:     1 2019-03-01         2    8.20   Z1  7.0  2.8             NA
+##         4:     1 2019-03-01         3    7.40   Z1  6.0  2.5             NA
+##         5:     1 2019-03-01         4    6.60   Z1  5.0  2.1             NA
+##        ---                                                                 
+## 329420859: 23436 2020-03-31        19   39.06   Z1 10.0  3.6              3
+## 329420860: 23436 2020-03-31        20   39.96   Z1  9.0  5.1              0
+## 329420861: 23436 2020-03-31        21   40.50   Z1  8.0  3.6              0
+## 329420862: 23436 2020-03-31        22   41.40   Z1  7.4  3.3              0
+## 329420863: 23436 2020-03-31        23   41.58   Z1  6.8  3.1              0
+```
+
+
 
 ---
 
 layout: false
 class: inverse, middle, center
 
-# Workflow
+# Librerie R
 
 ---
 

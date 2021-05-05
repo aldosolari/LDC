@@ -1,0 +1,167 @@
+---
+subtitle: "Lab Data Challenges"
+title: "Electricity Load Forecast Challenge"
+institute: "CLAMSES, A.A. 2020/21"
+date: "Università Milano-Bicocca </br> 6 Maggio 2021"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: [bicocca.css, fonts.css]
+    nature:
+      beforeInit: [xaringan.js]
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+background-size: 100%
+background-image: url(https://media.giphy.com/media/H7ODVHu0kTVnfenNtk/giphy.gif)
+
+
+---
+
+### In collaborazione con
+
+<img src="https://www.repower.com/media/456971/repower_1500px_it-0202.png" alt="repower" width="360" />
+
+.pull-left[
+![](IMAGES/fabio.png)
+
+**Fabio Baldi**
+
+Head of Market Risk & Business Analytics
+
+]
+
+.pull-right[
+
+![:scale 40%](IMAGES/carmelina.png)
+
+**Carmelina Tipoldi**
+
+Models and Analysis 
+
+]
+
+---
+
+### Con il supporto di 
+
+
+.pull-left[
+
+![](IMAGES/datalab.png)
+
+]
+
+.pull-right[
+
+![:scale 30%](IMAGES/pelosi.png)
+
+**Giovanni Pelosi**
+
+Datalab Cloud Engineer
+
+]
+
+---
+class: center
+
+# Lab Data Challenges
+
+![:scale 40%](IMAGES/LDC.png)
+
+---
+
+# Organizzatori
+
+.pull-left[
+![:scale 40%](IMAGES/vittoria.png)
+
+**Vittoria Cerasi**
+
+Coordinatrice del CLAMSES
+
+Professore di Economia
+
+]
+
+.pull-right[
+
+![:scale 37%](IMAGES/matteo.png)
+
+**Matteo Pelagatti**
+
+Direttore del DEMS
+
+Professore di Statistica Economica 
+
+]
+
+---
+
+# Docenti
+
+.pull-left[
+![:scale 40%](IMAGES/aldo.png)
+
+**Aldo Solari**
+
+Professore di Statistica
+
+]
+
+.pull-right[
+
+![:scale 40%](IMAGES/andrea.png)
+
+**Andrea Gilardi**
+
+Ricercatore di Statistica
+
+]
+
+---
+
+# Studenti
+
+
+## BOYS
+
+* Angelo Camera (STAT)
+
+* Simone Frigerio (STAT)
+
+* Nicholas Moro (SPI)
+
+## GIRLS
+
+* Margherita Parmi (STAT)
+
+* Laura Accorto (STAT)
+
+* Valentina Zangirolami (STAT)
+
+---
+
+# Agenda 
+
+
+* **6 Maggio 2021** : **INTRODUZIONE AL PROBLEMA (REPOWER)**
+
+* 10 Maggio 2021 : LAB I
+
+* 13 Maggio 2021 : LAB II 
+
+* 17 Maggio 2021 : LAB III  
+
+* 20 Maggio 2021 : LAB IV  
+
+* 24 Maggio 2021 : LAB V  
+
+* 28 Maggio 2021 (in presenza) : PRESENTAZIONE FINALE (STUDENTI)
