@@ -82,13 +82,13 @@ class: center, middle, inverse, title-slide
 
 ---
 
-# <svg aria-hidden="true" role="img" viewBox="0 0 576 512" style="height:1em;width:1.12em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M402.6 83.2l90.2 90.2c3.8 3.8 3.8 10 0 13.8L274.4 405.6l-92.8 10.3c-12.4 1.4-22.9-9.1-21.5-21.5l10.3-92.8L388.8 83.2c3.8-3.8 10-3.8 13.8 0zm162-22.9l-48.8-48.8c-15.2-15.2-39.9-15.2-55.2 0l-35.4 35.4c-3.8 3.8-3.8 10 0 13.8l90.2 90.2c3.8 3.8 10 3.8 13.8 0l35.4-35.4c15.2-15.3 15.2-40 0-55.2zM384 346.2V448H64V128h229.8c3.2 0 6.2-1.3 8.5-3.5l40-40c7.6-7.6 2.2-20.5-8.5-20.5H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V306.2c0-10.7-12.9-16-20.5-8.5l-40 40c-2.2 2.3-3.5 5.3-3.5 8.5z"/></svg> HOMEWORK 0
+# <svg aria-hidden="true" role="img" viewBox="0 0 576 512" style="height:1em;width:1.12em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M402.6 83.2l90.2 90.2c3.8 3.8 3.8 10 0 13.8L274.4 405.6l-92.8 10.3c-12.4 1.4-22.9-9.1-21.5-21.5l10.3-92.8L388.8 83.2c3.8-3.8 10-3.8 13.8 0zm162-22.9l-48.8-48.8c-15.2-15.2-39.9-15.2-55.2 0l-35.4 35.4c-3.8 3.8-3.8 10 0 13.8l90.2 90.2c3.8 3.8 10 3.8 13.8 0l35.4-35.4c15.2-15.3 15.2-40 0-55.2zM384 346.2V448H64V128h229.8c3.2 0 6.2-1.3 8.5-3.5l40-40c7.6-7.6 2.2-20.5-8.5-20.5H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V306.2c0-10.7-12.9-16-20.5-8.5l-40 40c-2.2 2.3-3.5 5.3-3.5 8.5z"/></svg> HOMEWORK ZERO
 
 ## Presentazione del problema e strategia di analisi
 
-1. Descrizione del problema
+Descrizione del problema
 
-2. Strategia di analisi
+Strategia di analisi
 
   * Punti di forza
   
@@ -98,7 +98,7 @@ class: center, middle, inverse, title-slide
 
 # Il dataset
 
-Il dataset è costituito da `\(n=23436\)` serie storiche di consumo orario di elettricità, ciascuna delle quali si riferisce ad un determinato punto di consegna (*point of delivery*, `POD`). 
+Il dataset è costituito da `\(22495\)` serie storiche di consumo orario di elettricità, ciascuna delle quali si riferisce ad un determinato punto di consegna (*point of delivery*, `POD`). 
 
 Sono state misurate le seguenti variabili:
 
@@ -108,17 +108,42 @@ Sono state misurate le seguenti variabili:
 
 * `OraMisura` ora della misurazione 0,1,...,23 (`integer`)
 
-* `Consumo` Consumo (`numeric`) 
+* `Consumo` Consumo kWh (`numeric`) 
 
 * `Zona` Zona di mercato: `Z1`, ..., `Z7` (`character`) 
 
-* `Temp` Temperatura della Zona (`numeric`) 
+* `Temp` Temperatura della Zona in °C (`numeric`) 
 
 * `Wind` Ventosità della Zona (`numeric`) 
 
 * `Glob_radiation` Radiazione globale della Zona (`integer`) 
 
-Le misurazioni coprono l'arco temporale  1 Maggio 2018 - 31 Dicembre 2020. 
+Le misurazioni coprono l'arco temporale  1 Maggio 2018 - 15 Novembre 2020. 
+
+---
+
+# Long format
+
+* 8 colonne (variabili)
+
+* 306762394 righe (osservazioni)
+
+
+```r
+            POD DataMisura OraMisura Consumo Zona Temp Wind Glob_radiation
+        1:    1 2019-03-01         0   8.400   Z1  9.0  3.5             NA
+        2:    1 2019-03-01         1   8.400   Z1  8.0  3.2             NA
+        3:    1 2019-03-01         2   8.200   Z1  7.0  2.8             NA
+        4:    1 2019-03-01         3   7.400   Z1  6.0  2.5             NA
+        5:    1 2019-03-01         4   6.600   Z1  5.0  2.1             NA
+       ---                                                                
+306762390: 9998 2020-10-31        19   0.674   Z2 10.5  1.3              0
+306762391: 9998 2020-10-31        20   0.675   Z2 10.5  1.0              0
+306762392: 9998 2020-10-31        21   0.674   Z2 10.0  1.0              0
+306762393: 9998 2020-10-31        22   0.674   Z2  9.5  1.0              0
+306762394: 9998 2020-10-31        23   0.428   Z2 11.0  1.3              0
+```
+
 
 ---
 
@@ -133,7 +158,18 @@ Le misurazioni coprono l'arco temporale  1 Maggio 2018 - 31 Dicembre 2020.
 * Criterio di valutazione: Median Absolute Error
 
 `$$\mathrm{MAE} = \sum_{z\in \{Z1,\ldots,Z7\}} \sum_{d=1}^{3} \sum_{h=0}^{23} |y_{z,d,h} - \hat{y}_{z,d,h}|$$`
+---
 
+# Riferimenti 
+
+* Corinne Walz, Franziska Ziemer (2009) [Electrical Load Forecasting in R](https://www.r-project.org/conferences/useR-2009/slides/Walz+Ziemer+Amberti.pdf). *The R User Conference
+Rennes, France*.
+
+
+* Rainer Göba, Kristina Lurza and Antonio Pievatolo (2013) Electrical load forecasting by exponential
+smoothing with covariates. *Applied Stochastic Models in Business and Industry* **29**, 629--645
+
+* `timetk::taylor_30_min` : R dataset (4032 `\(\times\)` 2) on half-hourly electricity demand in England and Wales from Monday 5 June 2000 to Sunday 27 August 2000. Discussed in Taylor JW (2003) Short-term electricity demand forecasting using double seasonal exponential smoothing. *Journal of the Operational Research Society* **54**, 799-805
 
 ---
 
@@ -205,7 +241,15 @@ repower
 ## 329420863: 23436 2020-03-31        23   41.58   Z1  6.8  3.1              0
 ```
 
+---
 
+## <svg aria-hidden="true" role="img" viewBox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M257.981 272.971L63.638 467.314c-9.373 9.373-24.569 9.373-33.941 0L7.029 444.647c-9.357-9.357-9.375-24.522-.04-33.901L161.011 256 6.99 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L257.981 239.03c9.373 9.372 9.373 24.568 0 33.941zM640 456v-32c0-13.255-10.745-24-24-24H312c-13.255 0-24 10.745-24 24v32c0 13.255 10.745 24 24 24h304c13.255 0 24-10.745 24-24z"/></svg> lavoro di gruppo 
+
+* Durante gli incontri utilizzeremo le risorse cloud (Microsoft Azure) messe a disposizione dal datalab
+
+* Le macchine virtuali v61 e v62 saranno disponibili per tutta la durata dell'attività
+
+* Risulterà utile utilizzare GitLab <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M105.2 24.9c-3.1-8.9-15.7-8.9-18.9 0L29.8 199.7h132c-.1 0-56.6-174.8-56.6-174.8zM.9 287.7c-2.6 8 .3 16.9 7.1 22l247.9 184-226.2-294zm160.8-88l94.3 294 94.3-294zm349.4 88l-28.8-88-226.3 294 247.9-184c6.9-5.1 9.7-14 7.2-22zM425.7 24.9c-3.1-8.9-15.7-8.9-18.9 0l-56.6 174.8h132z"/></svg> per il controllo versione (*version control*) 
 
 ---
 

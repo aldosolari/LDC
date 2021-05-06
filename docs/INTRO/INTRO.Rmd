@@ -61,7 +61,7 @@ Models and Analysis
 
 .pull-right[
 
-![:scale 30%](IMAGES/pelosi.png)
+![:scale 30%](IMAGES/giovanni.png)
 
 **Giovanni Pelosi**
 
@@ -133,19 +133,21 @@ Ricercatore di Statistica
 
 ## BOYS
 
-* Angelo Camera (STAT)
+* Angelo Camera 
 
-* Simone Frigerio (STAT)
+* Nicola Crespi
 
-* Nicholas Moro (SPI)
+* Simone Frigerio 
+
+* Nicholas Moro 
 
 ## GIRLS
 
-* Margherita Parmi (STAT)
+* Margherita Parmi 
 
-* Laura Accorto (STAT)
+* Laura Accorto 
 
-* Valentina Zangirolami (STAT)
+* Valentina Zangirolami
 
 ---
 
