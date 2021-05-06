@@ -22,7 +22,7 @@ options(htmltools.dir.version = FALSE)
 
 class: center
 
-# 1ma edizione del Lab Data Challenges
+# I edizione del Lab Data Challenges
 
 ![:scale 40%](IMAGES/LDC.png)
 
@@ -60,7 +60,7 @@ Models and Analysis
 
 ---
 
-# Organizzatori
+# Bicocca - organizzatori
 
 .pull-left[
 ![:scale 40%](IMAGES/vittoria.png)
@@ -87,7 +87,7 @@ Professore di Statistica Economica
 
 ---
 
-# Docenti
+# Bicocca - docenti
 
 .pull-left[
 ![:scale 40%](IMAGES/aldo.png)
