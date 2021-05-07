@@ -1,0 +1,81 @@
+---
+title: "Lab Data Challenges"
+subtitle: "LAB I"
+author: "Aldo Solari and Andrea Gilardi"
+date: "10 Maggio 2021"
+output: 
+  html_document: 
+    highlight: tango
+    theme: readable
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.align = 'center', collapse = TRUE)
+# options
+options(width = 120)
+library(fontawesome)
+```
+
+
+# AGENDA {.tabset}
+
+
+## `r fa("slideshare")` 
+
+
+### Presentazione del problema e strategia di analisi
+
+* Descrizione del problema
+
+* Strategia di analisi
+
+    * Punti di forza
+
+    * Punti di debolezza
+    
+
+### Presentazioni
+
+
+9:30 - 9:45 BOYS
+
+9:45 - 10:00 GIRLS
+
+
+## `r fa("tasks")` 
+
+### TASK I
+
+1. **IMPORT** Caricare le librerie `data.table` e `ggplot2`. Impostare `setDTthreads(percent = 100)` per il numero di thread da utilizzare nelle funzioni `data.table`. 
+Importare i dati con il comando `fread()`. Successivamente, fare la raccolta dei rifiuti (liberare un pò di memoria) con il comando `gc()`. Per ottenere maggiori dettagli relativamente al risultato di `fread()` e `gc()`, impostare l'argomento `verbose=T`. Visualizzare i dati (le prime osservazioni). Verificare la codifica (`class`) delle variabili. 
+
+2. **N.RO DI POD** Presenza di `NA` nella variabili `POD`, `DataMisura`, `OraMisura` e `Zona`? Ordinare i dati secondo `POD`, `DataMisura` e `OraMisura` (in questo preciso ordine) con il comando `setkey()`. Quanti `POD` sono presenti nel dataset? Quanti `POD` per ogni `Zona`? Ogni `POD` corrisponde ad una e una sola `Zona`?
+
+3. **POD IN ENTRATA E IN USCITA** Ciascun `POD` inizia il contratto in una certa data ("entra" in un certo giorno a una certa ora) e poi conclude il contratto in un tempo successivo ("esce" in un certo giorno a una certa ora). Tuttavia, un `POD` potrebbe entrare, uscire, ri-entrare etc, quindi potrebbe essere "attivo" in tempi non consecutivi.   
+Quanti `POD` entrano ed escono più volte? 
+Rappresentare graficamente con `ggplot()` il fenomeno dei `POD` che escono e poi rientrano (per un numero limitato di `POD`). Rappresentare graficamente  la distribuzione di frequenza delle date di entrata dei `POD`. Fare lo stesso per le date di uscita, e commentare il risultato.
+
+
+
+4. **ORARIO DI ENTRATA** E’ sempre vero che i `POD` entrano alle ore `0`? Quanti sono i `POD` che entrano ad un orario diverso delle `0`? Quante osservazioni sono associate a questi `POD`? Qual è la durata dei loro contratti?
+Ripetere la stessa analisi per la data di uscita: è sempre vero che i `POD` "escono" alle ore `23`? etc.
+
+5. **SERIE STORICA GIORNALIERA DEL N.RO DI POD ATTIVI** Calcolare la serie storica giornaliera del numero di `POD` "attivi". Commentare il risultato. 
+
+
+6. **CONSUMO AGGREGATO** Presenza di `NA` nella variabile `Consumo`? Calcolare la serie storica oraria della somma dei consumi (aggregando tutti i `POD`).
+Ci aspettiamo un numero di osservazioni pari a 24 * (numero di giorni). Il numero di osservazioni effettivo corrisponde a quello atteso? Individuare le osservazioni mancanti e commentare. (i) Rappresentare graficamente la serie storica oraria dei consumi aggregati e commentare. (ii) Rappresentare graficamente la serie storica giornaliera. Ripetere (i) e (ii) suddividendo per Zona, e commentare. 
+
+7. **VALORI ANOMALI IN CONSUMO** Identificare i valori anomali per la variabile `Consumo`. A quali `POD` sono associati? E in quali date?
+
+## `r fa("terminal")` 
+
+10:00 - 11:00  lavoro di gruppo
+
+11:00 - 11:15 pausa 
+
+11:15 - 12:00 lavoro di gruppo 
+
+## `r fa("file-code")`
+
+12:15 - 13:00 soluzione

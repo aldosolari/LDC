@@ -32,7 +32,7 @@ Il dataset consiste nello storico degli ultimi due anni dei consumi orari di tut
 
 * 6 Maggio 2021: **Introduzione ai [LABS](docs/LABS/LABS.html)**
 
-* 10 Maggio 2021: **LAB I** 
+* 10 Maggio 2021: **[LAB I](docs/LAB1/LAB1.html)** 
    
 * 13 Maggio 2021: **LAB II** 
    
