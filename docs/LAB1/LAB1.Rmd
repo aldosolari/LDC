@@ -23,20 +23,11 @@ library(fontawesome)
 ## `r fa("slideshare")` 
 
 
-### Presentazione del problema e strategia di analisi
+### PRESENTAZIONI
 
-* Descrizione del problema
+Descrizione del problema e strategia di analisi
 
-* Strategia di analisi
-
-    * Punti di forza
-
-    * Punti di debolezza
-    
-
-### Presentazioni
-
-
+  
 9:30 - 9:45 BOYS
 
 9:45 - 10:00 GIRLS
@@ -44,7 +35,7 @@ library(fontawesome)
 
 ## `r fa("tasks")` 
 
-### TASK I
+### TASK
 
 1. **IMPORT** Caricare le librerie `data.table` e `ggplot2`. Impostare `setDTthreads(percent = 100)` per il numero di thread da utilizzare nelle funzioni `data.table`. 
 Importare i dati con il comando `fread()`. Successivamente, fare la raccolta dei rifiuti (liberare un pò di memoria) con il comando `gc()`. Per ottenere maggiori dettagli relativamente al risultato di `fread()` e `gc()`, impostare l'argomento `verbose=T`. Visualizzare i dati (le prime osservazioni). Verificare la codifica (`class`) delle variabili. 
@@ -70,6 +61,8 @@ Ci aspettiamo un numero di osservazioni pari a 24 * (numero di giorni). Il numer
 
 ## `r fa("terminal")` 
 
+### LAVORO DI GRUPPO
+
 10:00 - 11:00  lavoro di gruppo
 
 11:00 - 11:15 pausa 
@@ -77,5 +70,7 @@ Ci aspettiamo un numero di osservazioni pari a 24 * (numero di giorni). Il numer
 11:15 - 12:00 lavoro di gruppo 
 
 ## `r fa("file-code")`
+
+### SOLUZIONE TASK
 
 12:15 - 13:00 soluzione
