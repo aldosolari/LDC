@@ -19,6 +19,10 @@ library(fontawesome)
 
 # AGENDA {.tabset}
 
+Stanza personale
+
+https://unimib.webex.com/meet/aldo.solari
+
 
 ## `r fa("slideshare")` 
 
