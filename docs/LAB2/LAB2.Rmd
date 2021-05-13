@@ -1,0 +1,63 @@
+---
+title: "Lab Data Challenges"
+subtitle: "LAB II"
+author: "Aldo Solari and Andrea Gilardi"
+date: "13 Maggio 2021"
+output: 
+  html_document: 
+    highlight: tango
+    theme: readable
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.align = 'center', collapse = TRUE)
+# options
+options(width = 120)
+library(fontawesome)
+```
+
+
+# AGENDA {.tabset}
+
+
+## `r fa("tasks")` 
+
+### TASK
+
+
+
+1. **CONSUMO AGGREGATO** Presenza di `NA` nella variabile `Consumo`? Calcolare la serie storica oraria della somma dei consumi (aggregando tutti i `POD`).
+Ci aspettiamo un numero di osservazioni pari a 24 * (numero di giorni). Il numero di osservazioni effettivo corrisponde a quello atteso? Individuare le osservazioni mancanti e commentare. (i) Rappresentare graficamente la serie storica oraria dei consumi aggregati e commentare. (ii) Rappresentare graficamente la serie storica giornaliera. Ripetere (i) e (ii) suddividendo per Zona, e commentare. 
+
+2. **VALORI ANOMALI IN CONSUMO** Identificare i valori anomali per la variabile `Consumo`. A quali `POD` sono associati? E in quali date?
+
+3. **VALORI MANCANTI** Determinare la percentuale di dati mancanti nelle variabili `Temp`, `Wind` e `Glob_radiation`, e commentare. Data una `Zona`, una `DataMisura` ed una `OraMisura`, i valori di `Temp` , `Wind` e `Glob_radiation` dovrebbero essere sempre gli stessi per tutti i `POD`. Verificare, commentare e proporre una soluzione. 
+
+4. **SERIE STORICA TEMPERATURA**  Rappresentare graficamente la serie storica oraria di  `Temp` per ciascuna `Zona`. Fare lo stesso per `Wind` e `Glob_radiation`. Suggerire una strategia per gestire i valori mancanti. 
+
+5. **RELAZIONE CONSUMO - TEMPERATURA** Qual è la relazione complessiva tra `Consumo` e `Temp`? Cambia in funzione della `Zona`? Rappresentare graficamente questa relazione, tenendo presente il numero di osservazioni (*plotting big data*). Fare lo stesso per `Wind` e `Glob_radiation`. 
+
+
+## `r fa("terminal")` 
+
+### LAVORO DI GRUPPO
+
+9:30 - 11:00  lavoro di gruppo
+
+11:00 - 11:15 pausa 
+
+## `r fa("file-code")`
+
+### SOLUZIONE TASK
+
+11:15 - 12:00 soluzione
+
+## `r fa("edit")`
+
+1. *Big data visualization:* rappresentare graficamente una grande quantità di dati. 
+
+2. *Lockdown effect:* stimare l'effetto causale del lockdown sulla serie temporale dei consumi. 
+
+
+
+

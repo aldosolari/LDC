@@ -348,9 +348,9 @@ pre code {
 
 
 <h1 class="title toc-ignore">Lab Data Challenges</h1>
-<h3 class="subtitle">LAB I</h3>
+<h3 class="subtitle">LAB II</h3>
 <h4 class="author">Aldo Solari and Andrea Gilardi</h4>
-<h4 class="date">10 Maggio 2021</h4>
+<h4 class="date">13 Maggio 2021</h4>
 
 </div>
 
@@ -358,45 +358,39 @@ pre code {
 <div id="agenda" class="section level1 tabset">
 <h1>AGENDA</h1>
 <div id="section" class="section level2">
-<h2><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M187.7 153.7c-34 0-61.7 25.7-61.7 57.7 0 31.7 27.7 57.7 61.7 57.7s61.7-26 61.7-57.7c0-32-27.7-57.7-61.7-57.7zm143.4 0c-34 0-61.7 25.7-61.7 57.7 0 31.7 27.7 57.7 61.7 57.7 34.3 0 61.7-26 61.7-57.7.1-32-27.4-57.7-61.7-57.7zm156.6 90l-6 4.3V49.7c0-27.4-20.6-49.7-46-49.7H76.6c-25.4 0-46 22.3-46 49.7V248c-2-1.4-4.3-2.9-6.3-4.3-15.1-10.6-25.1 4-16 17.7 18.3 22.6 53.1 50.3 106.3 72C58.3 525.1 252 555.7 248.9 457.5c0-.7.3-56.6.3-96.6 5.1 1.1 9.4 2.3 13.7 3.1 0 39.7.3 92.8.3 93.5-3.1 98.3 190.6 67.7 134.3-124 53.1-21.7 88-49.4 106.3-72 9.1-13.8-.9-28.3-16.1-17.8zm-30.5 19.2c-68.9 37.4-128.3 31.1-160.6 29.7-23.7-.9-32.6 9.1-33.7 24.9-10.3-7.7-18.6-15.5-20.3-17.1-5.1-5.4-13.7-8-27.1-7.7-31.7 1.1-89.7 7.4-157.4-28V72.3c0-34.9 8.9-45.7 40.6-45.7h317.7c30.3 0 40.9 12.9 40.9 45.7v190.6z"></path></svg></h2>
-<div id="presentazioni" class="section level3">
-<h3>PRESENTAZIONI</h3>
-<p>Descrizione del problema e strategia di analisi</p>
-<p>9:30 - 9:45 BOYS</p>
-<p>9:45 - 10:00 GIRLS</p>
-</div>
-</div>
-<div id="section-1" class="section level2">
 <h2><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M139.61 35.5a12 12 0 0 0-17 0L58.93 98.81l-22.7-22.12a12 12 0 0 0-17 0L3.53 92.41a12 12 0 0 0 0 17l47.59 47.4a12.78 12.78 0 0 0 17.61 0l15.59-15.62L156.52 69a12.09 12.09 0 0 0 .09-17zm0 159.19a12 12 0 0 0-17 0l-63.68 63.72-22.7-22.1a12 12 0 0 0-17 0L3.53 252a12 12 0 0 0 0 17L51 316.5a12.77 12.77 0 0 0 17.6 0l15.7-15.69 72.2-72.22a12 12 0 0 0 .09-16.9zM64 368c-26.49 0-48.59 21.5-48.59 48S37.53 464 64 464a48 48 0 0 0 0-96zm432 16H208a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h288a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-320H208a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h288a16 16 0 0 0 16-16V80a16 16 0 0 0-16-16zm0 160H208a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h288a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16z"></path></svg></h2>
 <div id="task" class="section level3">
 <h3>TASK</h3>
 <ol style="list-style-type: decimal">
-<li><p><strong>IMPORT</strong> Caricare le librerie <code>data.table</code> e <code>ggplot2</code>. Impostare <code>setDTthreads(percent = 100)</code> per il numero di thread da utilizzare nelle funzioni <code>data.table</code>. Importare i dati con il comando <code>fread()</code>. Successivamente, fare la raccolta dei rifiuti (liberare un pò di memoria) con il comando <code>gc()</code>. Per ottenere maggiori dettagli relativamente al risultato di <code>fread()</code> e <code>gc()</code>, impostare l’argomento <code>verbose=T</code>. Visualizzare i dati (le prime osservazioni). Verificare la codifica (<code>class</code>) delle variabili.</p></li>
-<li><p><strong>N.RO DI POD</strong> Presenza di <code>NA</code> nella variabili <code>POD</code>, <code>DataMisura</code>, <code>OraMisura</code> e <code>Zona</code>? Ordinare i dati secondo <code>POD</code>, <code>DataMisura</code> e <code>OraMisura</code> (in questo preciso ordine) con il comando <code>setkey()</code>. Quanti <code>POD</code> sono presenti nel dataset? Quanti <code>POD</code> per ogni <code>Zona</code>? Ogni <code>POD</code> corrisponde ad una e una sola <code>Zona</code>?</p></li>
-<li><p><strong>POD IN ENTRATA E IN USCITA</strong> Ciascun <code>POD</code> inizia il contratto in una certa data (“entra” in un certo giorno a una certa ora) e poi conclude il contratto in un tempo successivo (“esce” in un certo giorno a una certa ora). Tuttavia, un <code>POD</code> potrebbe entrare, uscire, ri-entrare etc, quindi potrebbe essere “attivo” in tempi non consecutivi.<br />
-Quanti <code>POD</code> entrano ed escono più volte? Rappresentare graficamente con <code>ggplot()</code> il fenomeno dei <code>POD</code> che escono e poi rientrano (per un numero limitato di <code>POD</code>). Rappresentare graficamente la distribuzione di frequenza delle date di entrata dei <code>POD</code>. Fare lo stesso per le date di uscita, e commentare il risultato.</p></li>
-<li><p><strong>ORARIO DI ENTRATA</strong> E’ sempre vero che i <code>POD</code> entrano alle ore <code>0</code>? Quanti sono i <code>POD</code> che entrano ad un orario diverso delle <code>0</code>? Quante osservazioni sono associate a questi <code>POD</code>? Qual è la durata dei loro contratti? Ripetere la stessa analisi per la data di uscita: è sempre vero che i <code>POD</code> “escono” alle ore <code>23</code>? etc.</p></li>
-<li><p><strong>SERIE STORICA GIORNALIERA DEL N.RO DI POD ATTIVI</strong> Calcolare la serie storica giornaliera del numero di <code>POD</code> “attivi”. Commentare il risultato.</p></li>
 <li><p><strong>CONSUMO AGGREGATO</strong> Presenza di <code>NA</code> nella variabile <code>Consumo</code>? Calcolare la serie storica oraria della somma dei consumi (aggregando tutti i <code>POD</code>). Ci aspettiamo un numero di osservazioni pari a 24 * (numero di giorni). Il numero di osservazioni effettivo corrisponde a quello atteso? Individuare le osservazioni mancanti e commentare. (i) Rappresentare graficamente la serie storica oraria dei consumi aggregati e commentare. (ii) Rappresentare graficamente la serie storica giornaliera. Ripetere (i) e (ii) suddividendo per Zona, e commentare.</p></li>
 <li><p><strong>VALORI ANOMALI IN CONSUMO</strong> Identificare i valori anomali per la variabile <code>Consumo</code>. A quali <code>POD</code> sono associati? E in quali date?</p></li>
+<li><p><strong>VALORI MANCANTI</strong> Determinare la percentuale di dati mancanti nelle variabili <code>Temp</code>, <code>Wind</code> e <code>Glob_radiation</code>, e commentare. Data una <code>Zona</code>, una <code>DataMisura</code> ed una <code>OraMisura</code>, i valori di <code>Temp</code> , <code>Wind</code> e <code>Glob_radiation</code> dovrebbero essere sempre gli stessi per tutti i <code>POD</code>. Verificare, commentare e proporre una soluzione.</p></li>
+<li><p><strong>SERIE STORICA TEMPERATURA</strong> Rappresentare graficamente la serie storica oraria di <code>Temp</code> per ciascuna <code>Zona</code>. Fare lo stesso per <code>Wind</code> e <code>Glob_radiation</code>. Suggerire una strategia per gestire i valori mancanti.</p></li>
+<li><p><strong>RELAZIONE CONSUMO - TEMPERATURA</strong> Qual è la relazione complessiva tra <code>Consumo</code> e <code>Temp</code>? Cambia in funzione della <code>Zona</code>? Rappresentare graficamente questa relazione, tenendo presente il numero di osservazioni (<em>plotting big data</em>). Fare lo stesso per <code>Wind</code> e <code>Glob_radiation</code>.</p></li>
 </ol>
 </div>
 </div>
-<div id="section-2" class="section level2">
+<div id="section-1" class="section level2">
 <h2><svg aria-hidden="true" role="img" viewBox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M257.981 272.971L63.638 467.314c-9.373 9.373-24.569 9.373-33.941 0L7.029 444.647c-9.357-9.357-9.375-24.522-.04-33.901L161.011 256 6.99 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L257.981 239.03c9.373 9.372 9.373 24.568 0 33.941zM640 456v-32c0-13.255-10.745-24-24-24H312c-13.255 0-24 10.745-24 24v32c0 13.255 10.745 24 24 24h304c13.255 0 24-10.745 24-24z"></path></svg></h2>
 <div id="lavoro-di-gruppo" class="section level3">
 <h3>LAVORO DI GRUPPO</h3>
-<p>10:00 - 11:00 lavoro di gruppo</p>
+<p>9:30 - 11:00 lavoro di gruppo</p>
 <p>11:00 - 11:15 pausa</p>
-<p>11:15 - 12:00 lavoro di gruppo</p>
 </div>
 </div>
-<div id="section-3" class="section level2">
+<div id="section-2" class="section level2">
 <h2><svg aria-hidden="true" role="img" viewBox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M384 121.941V128H256V0h6.059c6.365 0 12.47 2.529 16.971 7.029l97.941 97.941A24.005 24.005 0 0 1 384 121.941zM248 160c-13.2 0-24-10.8-24-24V0H24C10.745 0 0 10.745 0 24v464c0 13.255 10.745 24 24 24h336c13.255 0 24-10.745 24-24V160H248zM123.206 400.505a5.4 5.4 0 0 1-7.633.246l-64.866-60.812a5.4 5.4 0 0 1 0-7.879l64.866-60.812a5.4 5.4 0 0 1 7.633.246l19.579 20.885a5.4 5.4 0 0 1-.372 7.747L101.65 336l40.763 35.874a5.4 5.4 0 0 1 .372 7.747l-19.579 20.884zm51.295 50.479l-27.453-7.97a5.402 5.402 0 0 1-3.681-6.692l61.44-211.626a5.402 5.402 0 0 1 6.692-3.681l27.452 7.97a5.4 5.4 0 0 1 3.68 6.692l-61.44 211.626a5.397 5.397 0 0 1-6.69 3.681zm160.792-111.045l-64.866 60.812a5.4 5.4 0 0 1-7.633-.246l-19.58-20.885a5.4 5.4 0 0 1 .372-7.747L284.35 336l-40.763-35.874a5.4 5.4 0 0 1-.372-7.747l19.58-20.885a5.4 5.4 0 0 1 7.633-.246l64.866 60.812a5.4 5.4 0 0 1-.001 7.879z"></path></svg></h2>
 <div id="soluzione-task" class="section level3">
 <h3>SOLUZIONE TASK</h3>
-<p>12:15 - 13:00 soluzione</p>
+<p>11:15 - 12:00 soluzione</p>
 </div>
+</div>
+<div id="section-3" class="section level2">
+<h2><svg aria-hidden="true" role="img" viewBox="0 0 576 512" style="height:1em;width:1.12em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M402.6 83.2l90.2 90.2c3.8 3.8 3.8 10 0 13.8L274.4 405.6l-92.8 10.3c-12.4 1.4-22.9-9.1-21.5-21.5l10.3-92.8L388.8 83.2c3.8-3.8 10-3.8 13.8 0zm162-22.9l-48.8-48.8c-15.2-15.2-39.9-15.2-55.2 0l-35.4 35.4c-3.8 3.8-3.8 10 0 13.8l90.2 90.2c3.8 3.8 10 3.8 13.8 0l35.4-35.4c15.2-15.3 15.2-40 0-55.2zM384 346.2V448H64V128h229.8c3.2 0 6.2-1.3 8.5-3.5l40-40c7.6-7.6 2.2-20.5-8.5-20.5H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V306.2c0-10.7-12.9-16-20.5-8.5l-40 40c-2.2 2.3-3.5 5.3-3.5 8.5z"></path></svg></h2>
+<ol style="list-style-type: decimal">
+<li><p><em>Big data visualization:</em> rappresentare graficamente una grande quantità di dati.</p></li>
+<li><p><em>Lockdown effect:</em> stimare l’effetto causale del lockdown sulla serie temporale dei consumi.</p></li>
+</ol>
 </div>
 </div>
 
