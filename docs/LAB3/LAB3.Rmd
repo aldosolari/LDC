@@ -1,0 +1,214 @@
+---
+title: "Lab Data Challenges"
+subtitle: "LAB III"
+author: "Aldo Solari and Andrea Gilardi"
+date: "17 Maggio 2021"
+output: 
+  html_document: 
+    highlight: tango
+    theme: readable
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.align = 'center', collapse = TRUE)
+# options
+options(width = 120)
+library(fontawesome)
+```
+
+
+# AGENDA {.tabset}
+
+
+## `r fa("slideshare")` 
+
+
+### PRESENTAZIONI
+  
+9:30 - 9:45 GIRLS
+
+9:45 - 10:00 BOYS
+
+
+## `r fa("tasks")` 
+
+### TASK
+
+1. Estrarre il sottoinsieme di dati relativo alla Sardegna, ovvero `Zona == "Z7"`, e salvarlo nella directory dei dati.  
+
+```{r, eval=FALSE}
+rm(list=ls())
+library(data.table)
+setDTthreads(percent = 100)
+
+# ---- CARICAMENTO DEI DATI ----
+repower <- fread(
+  input = "~/work/ds/ldc-cx670-nrg-rp-b60/inst/extdata/ext/nrg-rp.loc/data-repower/ldc/repower_train.csv"
+)
+gc()
+
+# ---- SOTTOINSIEME DEI DATI ----
+subsample_zona <- repower[Zona == "Z7"]
+rm(repower)
+gc()
+
+# ---- SCRITTURA ----
+fwrite(subsample_zona, file="~/work/ds/ldc-cx670-nrg-rp-b60/inst/extdata/ext/nrg-rp.loc/data-repower/ldc/subsample_zona.csv")
+```
+
+2. Importare il sottoinsieme di dati relativo alla Zona, integrando il dataset con la variabile `Cluster` presente nel dataset `associazione_pod_cluster.xlsx` :
+
+```{r, eval=FALSE}
+rm(list=ls())
+
+# ---- LIBRERIE ----
+library(readxl)
+library(lubridate)
+
+# ---- CARICAMENTO DEI DATI ----
+subsample_zona <- fread(
+  input = "~/work/ds/ldc-cx670-nrg-rp-b60/inst/extdata/ext/nrg-rp.loc/data-repower/ldc/subsample_zona.csv"
+)
+subsample_zona[,POD:=as.character(POD)]
+cluster <- read_excel("~/work/ds/dat-cx670-nrg-rp-b60/inst/extdata/ext/nrg-rp.loc/data-repower/associazione_pod_cluster.xlsx", 
+                      col_types = c("text", "text")
+                        )
+cluster <- as.data.table(cluster)
+
+# ---- LEFT OUTER JOIN ----
+setkey(cluster,POD)
+setkey(subsample_zona,POD)
+subsample_zona_clu <- merge(subsample_zona,cluster, all.x=TRUE)
+rm(subsample_zona, cluster)
+gc()
+
+# ---- PULIZIA ----
+subsample_zona_clu[is.na(Cluster), .N]
+subsample_zona_clu[is.na(Cluster), Cluster:="UNKNOWN"]
+subsample_zona_clu[,Zona:=NULL]
+subsample_zona_clu[,Zona:=NULL]
+gc()
+
+# ---- DATI AGGREGATI PER CLUSTER ----
+subsample_zona_clu_agg <- subsample_zona_clu[
+  j = .(sum_Consumo = sum(Consumo), 
+        Temp = max(Temp), 
+        Wind = max(Wind),
+        Glob_radiation = max(Glob_radiation),
+        N_POD = length(POD)), 
+  by = list(Cluster, DataMisura, OraMisura)
+]
+subsample_zona_clu_agg[, DTMisura := as.POSIXct(paste(DataMisura, paste0(OraMisura, ":00")), tz = "UTC")]
+subsample_zona_clu_agg[, c("DataMisura", "OraMisura") := list(NULL, NULL)]
+
+# ---- DATI AGGREGATI ----
+subsample_zona_agg <- subsample_zona_clu[
+  j = .(sum_Consumo = sum(Consumo), 
+        Temp = max(Temp), 
+        Wind = max(Wind), 
+        Glob_radiation = max(Glob_radiation), 
+        N_POD = length(POD) ), 
+  by = list(DataMisura, OraMisura)
+]
+subsample_zona_agg[, DTMisura := as.POSIXct(paste(DataMisura, paste0(OraMisura, ":00")), tz = "UTC")]
+subsample_zona_agg[, c("DataMisura", "OraMisura") := list(NULL, NULL)]
+rm(subsample_zona_clu)
+gc()
+```
+
+I POD sono suddivisi in 3 gruppi:
+
+* 2G (contatore di nuova generazione, questi pod non sono stati clusterizzati utilizzando un algoritmo ma semplicemente suddivisi sulle zone, per identificarli sono quelli per cui il cluster termina con 2G);
+* 1G (contatori di vecchia generazione, clusterizzati con un algoritmo che raggruppa i pod cercando di massimizzare la distanza tra i vari gruppi e minimizzare la varianza all’interno di ogni gruppo e poi suddivisi per zone, sotto faccio un riepilogo);
+* Energivori (371,443,557,1479,1546,1551) che sono contatori trattati singolarmente in quanto clienti ad hoc, per questi quindi il cluster è rappresentato dal punto stesso.
+ 
+Per quanto riguarda i cluster dei POD 1G abbiamo:
+
+* Un cluster termico estivo con una piccola differenza di consumo settimana/weekend (C20FSM che sta per flat summer);
+* Un cluster termico estivo con un picco di consumo nel periodo estivo e con differenza settimana/weekend più marcata  (C20WESM che sta per weekend summer):
+* Un cluster termico estivo con differenze marcate solo sui giorni festivi (domeniche, 15 agosto, 25-26 dicembre) e stabile sugli altri (anche sul sabato) (C20WDSM che sta per Weekday summer);
+* Un cluster estivo che consuma praticamente solo in estate (C20HSM che sta per high summer);
+* Un cluster termico invernale (C20FWI che sta per flat winter);
+* Un cluster termico generico con riduzione dei consumi nei periodi di spalla (C20TMG che sta per generic termic);
+* Un cluster termico invernale con molta variabilità infrasettimanale/weekend e anche nel profilo orario infrasettimanale (C20WKWI che sta per Working winter);
+* Un cluster notturno che consuma maggiormente nelle ore serali/notturne (C20NT che sta per night):
+* Un cluster dei cosiddetti "brutti" che non hanno un profilo da cui si può dedurre una logica di comportamento (C20BAD che sta per brutti).
+ 
+Ci sono circa 1000 POD che non sono associati a nessun cluster e questo può avvenire per 2 motivi, o hanno poca storia oppure hanno distanze troppo grandi rispetto agli altri cluster.
+
+Notare che è stato ignorato il problema del cambio d'ora legale/solare: mancano le ore 2 del 2019-03-31 e 2020-03-29 e le ore 3 del 2018-10-28, 2019-10-27 e 2020-10-25 sono raddoppiate, con effetti sul consumo aggregato. 
+
+3. Analisi della serie storica aggregata per Zona. Suddividere i dati in training e test corrispondenti alle seguenti date:
+
+* Training da 2018-05-01 00:00:00 a 2020-06-15 23:00:00
+* Test da 2020-06-16 00:00:00 a 2020-07-03 23:00:00
+
+```{r, eval=FALSE}
+
+# ---- LIBRERIE ----
+library(tidyverse)
+library(timetk)
+library(tidyquant)
+library(xgboost)
+library(tidymodels)
+library(modeltime)
+library(modeltime.resample)
+library(modeltime.ensemble)
+
+# ---- DATI IN FORMATO TIBBLE ----
+dat = as_tibble(subsample_zona_agg)
+dat <- dat %>% 
+  select(DTMisura, sum_Consumo, Temp) %>% 
+  rename(x = DTMisura, y = sum_Consumo, z = Temp)
+gc()
+
+# ---- PADDING ----
+# aggiungi NA ore 2 del 2019-03-31 e 2020-03-29 e sostituirli con i valori dell'ora precedente
+# sostituire NA con valori in Temp 
+dat_pad <- dat %>%
+  pad_by_time(x, .by = "hour") %>%
+  mutate_at(vars(z), .funs = ts_impute_vec, period = 24*7)
+# sostituisci ore 2 del 2019-03-31 e 2020-03-29 con ore 1
+dat_pad[is.na(dat_pad$y), -which(names(dat_pad)=="x")] <- dat_pad[which(is.na(dat_pad$y))-1, -which(names(dat_pad)=="x")]
+
+# ---- TRAIN / TEST ----
+# train da 2018-05-01 00:00:00 a 2020-06-15 23:00:00
+# test da 2020-06-16 00:00:00 a 2020-07-03 23:00:00
+full <- dat_pad %>% filter_by_time(x, "2018-05-01 00:00:00", "2020-07-03 23:00:00") 
+train <- dat_pad %>% filter_by_time(x, "2018-05-01 00:00:00", "2020-06-15 23:00:00") 
+test <- dat_pad %>% filter_by_time(x, "2020-06-16 00:00:00", "2020-07-03 23:00:00")
+```
+E' stata utilizzata la funzione `pad_by_time` per rendere una serie storica irregolare (mancano le ore 2 del 2019-03-31 e 2020-03-29) in regolare, inserendo degli `NA`. I dati mancanti possono essere sostituiti imputado i dati con ad esempio la funzione `ts_impute_vec`.Per ulteriori dettagli, si veda la sezione [Time Series Data Wrangling](https://business-science.github.io/timetk/articles/TK07_Time_Series_Data_Wrangling.html) della libreria `timetk`.
+
+
+4. [Visualizing Time Series](https://business-science.github.io/timetk/articles/TK04_Plotting_Time_Series.html) Visualizzare la serie storica dei consumi aggregati del dataset `train` con il comando `plot_time_series` trasformando le osservazioni orarie in giornaliere con il comando 
+`summarise_by_time`. 
+
+5. [Plotting Seasonality and Correlation](https://business-science.github.io/timetk/articles/TK05_Plotting_Seasonality_and_Correlation.html) Esplorare le stagionalità dei consumi aggregati con il comando `plot_seasonal_diagnostics`.
+
+6. [Time Series Machine Learning](https://business-science.github.io/timetk/articles/TK03_Forecasting_Using_Time_Series_Signature.html) Utilizzare il comando `time_series_split` con argomento `assess = 18 days` (corrispondenti alla finestra temporale da 2020-06-16 a 2020-07-03) per il dataset `full` per suddividere i dati in training e test. Addestrare i modelli `glmnet`, `xgboost` e `mars` seguendo i passi:
+
+* Specificazione della ricetta di pre-elaborazione (Preprocessing Recipe);
+* Specificazione del modello (Model Specifications);
+* Utilizza il flusso di lavoro (Workflow) per combinare Model Specifications e Preprocessing, per poi stimare il modello.
+
+Calcolare il MAE per le previsioni orarie nei 18 giorni e nei 3 giorni 1, 2 e 3 Luglio 2020. 
+
+Ripetere la stessa analisi utilizzando la serie storica giornaliera, per poi ridistruibuire le previsioni su scala oraria. 
+
+
+## `r fa("terminal")` 
+
+### LAVORO DI GRUPPO
+
+10:00 - 11:00  lavoro di gruppo
+
+11:00 - 11:15 pausa 
+
+11:15 - 12:00 lavoro di gruppo 
+
+## `r fa("file-code")`
+
+### SOLUZIONE TASK
+
+12:15 - 13:00 soluzione
