@@ -1,0 +1,54 @@
+---
+title: "Lab Data Challenges"
+subtitle: "LAB IV"
+author: "Aldo Solari and Andrea Gilardi"
+date: "20 Maggio 2021"
+output: 
+  html_document: 
+    highlight: tango
+    theme: readable
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.align = 'center', collapse = TRUE)
+# options
+options(width = 120)
+library(fontawesome)
+```
+
+
+# AGENDA {.tabset}
+
+## `r fa("tasks")` 
+
+### TASK
+
+1. Importare il sottoinsieme di dati relativo alla Zona, integrando il dataset con la variabile `Cluster`. Aggregare i consumi per Cluster, e suddividere i dati in training e test corrispondenti alle seguenti date:
+
+* Training da 2018-05-01 00:00:00 a 2020-06-15 23:00:00
+* Test da 2020-06-16 00:00:00 a 2020-07-03 23:00:00 
+
+2. [Autoregressive Forecasting with Recursive](https://business-science.github.io/modeltime/articles/recursive-forecasting.html) Analizzare le serie storiche giornaliere corrispondenti ai Cluster per ottenere le previsioni a 18 giorni. Utilizzare un modello lineare ricorsivo con lag da 1 a 7 giorni e una media mobile. Ridistribuire le previsioni giornaliere nelle 24 ore, e calcolare il MAE relativo ai giorni 1, 2 e 3 Luglio. 
+
+
+3. [Modeltime H2O](https://business-science.github.io/modeltime.h2o/articles/getting-started.html) Analizzare le serie storiche giornaliere corrispondenti ai Cluster per ottenere le previsioni a 18 giorni. Utilizzare la libreria `modeltime.h2o` per eseguire la funzione `automl_reg` per addestrare più modelli di machine learning  (XGBoost GBM, GLM, Random Forest, GBM ...) per ottenere il modello migliore.
+Ridistribuire le previsioni giornaliere nelle 24 ore, e calcolare il MAE relativo ai giorni 1, 2 e 3 Luglio. 
+
+
+## `r fa("terminal")` 
+
+### LAVORO DI GRUPPO
+
+9:30 - 11:00  lavoro di gruppo
+
+11:00 - 11:15 pausa 
+
+## `r fa("file-code")`
+
+### SOLUZIONE TASK
+
+11:15 - 12:00 soluzione
+
+## `r fa("edit")`
+
+tbd
