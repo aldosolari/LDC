@@ -51,4 +51,10 @@ Ridistribuire le previsioni giornaliere nelle 24 ore, e calcolare il MAE relativ
 
 ## `r fa("edit")`
 
-tbd
+Preparare una bozza della presentazione finale. 
+
+Per una comunicazione efficace:
+
+* [So what?](http://www.storytellingwithdata.com/blog/2017/3/22/so-what)
+* [How to ask](https://stackoverflow.com/help/how-to-ask)
+* Effective communication [HTML](https://idc9.github.io/stor390/notes/communication/communication.html) [PDF](https://idc9.github.io/stor390/slides/communication.pdf)
